@@ -23,12 +23,15 @@ To use IBM schematics, you need to gain certain information, here is the most im
 
 - ibm_bmx_api_key
   - your api key for IBM Bluemix
+  - If you do not have an existing API key, you can generate the value by running bluemix iam api-key-create NAME
 - ibm_sl_username
   - your username for SoftLayer
 - ibm_sl_api_key
   - your api key for SoftLayer
+  - You can retrieve the value from the "SoftLayer Customer Portal", in the API Access Information section
 - ssh_public_key
   - your personal ssh public key to access servers on softlayer
+  - you need to have "manage sshkey" permission on bluemix
 
 ## Usage
 
