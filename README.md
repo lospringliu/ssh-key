@@ -1,82 +1,92 @@
-# Terraform Bluemix SSH Key
-A Terraform configuration for creating an [IBM Cloud SSH Key](https://ibm-bluemix.github.io/tf-ibm-docs/v0.4.0/r/compute_ssh_key.html) (`ibm_compute_ssh_key`). This will create a SSH key in the specified IBM cloud account. This is not a module, it is a terraform configuration that should be cloned or forked to be used.
+# spectrum-schematics-cluster
 
-**This configuration template is written for IBM Cloud Provider version `v0.4.0`**
+IBM schematics is a template system based on terraform
 
-# Usage with IBM Cloud Schematics
+This repository can be cloned or directly used in IBM Bluemix Schematics. You simply provide your account info and ssh keys, you can also fine controll with other terraform variables
 
-Follow the instructions on the [Getting Started with IBM Cloud Schematics](https://console.ng.bluemix.net/docs/services/schematics/index.html#gettingstarted) documentation page.
+## Release Information
 
-# Usage with Terraform Binary on your local workstation
-You will need to [setup up IBM Cloud provider credentials](#setting-up-provider-credentials) on your local machine. Then you will need the [Terraform binary](https://www.terraform.io/intro/getting-started/install.html) and the [IBM Cloud Provider Plugin](https://github.com/IBM-Bluemix/terraform/releases). Then follow the instructions at [https://ibm-bluemix.github.io/tf-ibm-docs/v0.4.0/#developing-locally](https://ibm-bluemix.github.io/tf-ibm-docs/v0.4.0/#developing-locally).
+* IBM Spectrum Symphony Cluster on Schematics
+* Supported Product: symphony v7.2.0.0
 
-To run this project locally execute the following steps:
+## Contents
 
-- Supply `datacenter`, `public_key`, `key_label`, and `key_note` variable values in `terraform.tfvars`, see https://www.terraform.io/intro/getting-started/variables.html#from-a-file for instructions.
-  - Alternatively these values can be supplied via the command line or environment variables, see https://www.terraform.io/intro/getting-started/variables.html.
-- Specifically for `public_key` material see ["Generating a new SSH key and adding it to the ssh-agent"](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)) so that your workstation will use the key.
-- `terraform plan`: this will perform a dry run to show what infrastructure terraform intends to create
-- `terraform apply`: this will create actual infrastructure
-  - Infrastructure can be seen in IBM Bluemix under the following URLs:
-    - SSH keys: https://control.bluemix.net/devices/sshkeys
-- `terraform destroy`: this will destroy all infrastructure which has been created
+* Introduction
+* Usage
+* Release Notes
+* Community Contribution
+* Copyright
+ 
+## Introduction
 
-# Available Data Centers
-Any of these values is valid for use with the `datacenter` variable:
-- `ams01`: Amsterdam 1
-- `ams03`: Amsterdam 3
-- `che01`: Chennai 1
-- `dal01`: Dallas 1
-- `dal10`: Dallas 10
-- `dal12`: Dallas 12
-- `dal02`: Dallas 2
-- `dal05`: Dallas 5
-- `dal06`: Dallas 6
-- `dal07`: Dallas 7
-- `dal09`: Dallas 9
-- `fra02`: Frankfurt 2
-- `hkg02`: Hong Kong 2
-- `hou02`: Houston 2
-- `lon02`: London 2
-- `mel01`: Melbourne 1
-- `mex01`: Mexico 1
-- `mil01`: Milan 1
-- `mon01`: Montreal 1
-- `osl01`: Oslo 1
-- `par01`: Paris 1
-- `sjc01`: San Jose 1
-- `sjc03`: San Jose 3
-- `sao01`: Sao Paulo 1
-- `sea01`: Seattle 1
-- `seo01`: Seoul 1
-- `sng01`: Singapore 1
-- `syd01`: Sydney 1
-- `syd04`: Sydney 4
-- `tok02`: Tokyo 2
-- `tor01`: Toronto 1
-- `wdc01`: Washington 1
-- `wdc04`: Washington 4
+## Usage
 
-# Running in Multiple Data centers
-Simply run `terraform plan -var 'datacenter=lon02' -state=lon02.tfstate` or whatever your preferred datacenter is (replace `lon02` for both arguments), and repeat for `terraform apply` with the same arguments.
+### steps
 
-# Setting up Provider Credentials
-To setup the IBM Cloud provider to work with this example there are a few options for managing credentials safely; here we'll cover the preferred method using environment variables. Other methods can be used, please see the [Terraform Getting Started Variable documentation](https://www.terraform.io/intro/getting-started/variables.html) for further details.
+Before compiling the library, set the LSF environment variables.
 
-## Environment Variables using IBMid credentials
-You'll need to export the following environment variables:
+To compile and install the library, go to the main source directory
+and type:
 
-- `TF_VAR_bxapikey` - your Bluemix API Key
-- `TF_VAR_slusername` - your Softlayer username
-- `TF_VAR_slapikey` - your Softlayer username
+### all variables
 
-On OS X this is achieved by entering the following into your terminal, replacing the `<value>` characters with the actual values (remove the `<>`:
+- please read terraform.tfvars and/or main.tf
 
-- `export TF_VAR_bxapikey=<value>`
-- `export TF_VAR_slusername=<value>`
-- `export TF_VAR_slapikey=<value>`
 
-However this is only temporary to your current terminal session, to make this permanent add these export statements to your `~/.profile`, `~/.bashrc`, `~/.bash_profile` or preferred terminal configuration file. If you go this route without running `export ...` in your command prompt, you'll need to source your terminal configuration file from the command prompt like so: `source ~/.bashrc` (or your preferred config file).
+## Release Notes
 
-# License
-MIT; see [LICENSE](LICENSE) for details.
+### Release initial
+
+- This is the first release from IBM Spectrum Computing.
+- Create centos based symphony 7.2.0.0 virtual machines on SoftLayer using Schematics.
+- Required variables
+  - ibm_bmx_api_key
+  - ibm_sl_username
+  - ibm_sl_api_key
+  - ssh_public_key
+
+## Community Contribution Requirements
+
+Community contributions to this repository must follow the [IBM Developer's Certificate of Origin (DCO)](https://github.com/IBMSpectrumComputing/platform-python-lsf-api/blob/master/IBMDCO.md) process and only through GitHub Pull Requests:
+
+ 1. Contributor proposes new code to community.
+
+ 2. Contributor signs off on contributions 
+    (i.e. attachs the DCO to ensure contributor is either the code 
+    originator or has rights to publish. The template of the DCO is included in
+    this package).
+ 
+ 3. IBM Spectrum LSF development reviews contribution to check for:
+    i)  Applicability and relevancy of functional content 
+    ii) Any obvious issues
+
+ 4. If accepted, posts contribution. If rejected, work goes back to contributor and is not merged.
+
+## Copyright
+
+### Unlicense
+
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <https://unlicense.org>
