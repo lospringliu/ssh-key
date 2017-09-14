@@ -23,18 +23,18 @@ This repository can be cloned or directly used in IBM Bluemix Schematics. You si
 
 ### steps
 
-1. login to IBM bluemix, navigate to Schematics
-2. create new environment
-  1. Source Control URL: use this repository or your forked repository 
-  2. Variables (required)
-    1. ibm_bmx_api_key
-    2. ibm_sl_username
-    3. ibm_sl_api_key
-    4. ssh_public_key
-  3. Variables (optional)
-    1. refer to the file terraform.tfvars
-3. plan and view plan log
-4. apply and view apply log
+- login to IBM bluemix, navigate to Schematics
+- create new environment
+  - Source Control URL: use this repository or your forked repository 
+  - Variables (required)
+    - ibm_bmx_api_key
+    - ibm_sl_username
+    - ibm_sl_api_key
+    - ssh_public_key
+  - Variables (optional)
+    - refer to the file terraform.tfvars
+- plan and view plan log
+- apply and view apply log
 
 ### all variables
 
