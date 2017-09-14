@@ -1,6 +1,6 @@
 # spectrum-schematics-cluster
 
-IBM schematics is a template system based on terraform
+Schematics is a template system for IBM Bluemix based on terraform
 
 This repository can be cloned or directly used in IBM Bluemix Schematics. You simply provide your account info and ssh keys, you can also fine controll with other terraform variables
 
@@ -23,15 +23,22 @@ This repository can be cloned or directly used in IBM Bluemix Schematics. You si
 
 ### steps
 
-Before compiling the library, set the LSF environment variables.
-
-To compile and install the library, go to the main source directory
-and type:
+1. login to IBM bluemix, navigate to Schematics
+2. create new environment
+  - Source Control URL: use this repository or your forked repository 
+  - Variables (required)
+    - ibm_bmx_api_key
+    - ibm_sl_username
+    - ibm_sl_api_key
+    - ssh_public_key
+  - Variables (optional)
+    - refer to the file terraform.tfvars
+3. plan and view plan log
+4. apply and view apply log
 
 ### all variables
 
 - please read terraform.tfvars and/or main.tf
-
 
 ## Release Notes
 
