@@ -24,7 +24,7 @@ To use IBM schematics, you need to gain certain information, here is the most im
 - ibm_bmx_api_key
   - your api key for IBM Bluemix
 - ibm_sl_username
-  - your username for IBM Bluemix
+  - your username for SoftLayer
 - ibm_sl_api_key
   - your api key for SoftLayer
 - ssh_public_key
